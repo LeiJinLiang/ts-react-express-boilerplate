@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start": "export NODE_ENV=development && npx webpack && tsc && node ./dist/server.js",
-    "build": "export NODE_ENV=production PORT=3001 && npx webpack && tsc && node ./dist/server.js",
+    "launch": "export NODE_ENV=production PORT=3001 && npx webpack && tsc && node ./dist/server.js",
     "format": "prettier --write \"src/**/*.tsx\""
   },
   "dependencies": {
