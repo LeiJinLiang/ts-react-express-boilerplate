@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 import webpack from 'webpack';
 import path from 'path';
-const config = {
+const config:any = {
     mode: process.env.NODE_ENV !== 'production'?'development':'production',
     devtool: "cheap-eval-source-map",
     entry: process.env.NODE_ENV === 'production'?[path.resolve('src/main.tsx')]:['webpack-hot-middleware/client?reload=true', path.resolve('src/main.tsx')],
@@ -25,6 +25,12 @@ const config = {
                         loader: "ts-loader"
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader', 'css-loader'
+                ]
             }
         ]
     },
@@ -39,10 +45,7 @@ const config = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         new CleanWebpackPlugin() 
-    ],
-    optimization : {
-        
-    }
+    ]
 }
 
 if(process.env.NODE_ENV === 'production'){
