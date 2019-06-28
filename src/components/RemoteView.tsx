@@ -14,7 +14,7 @@ export const RemoteView = (props: any) => {
     <>
       {data.map((item: any, idx: any) => (
         <li key={idx}>
-          <strong>{item.id}</strong>
+          <strong>{item.name}</strong>
         </li>
       ))}
     </>
