@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Hello from "./containers/Hello";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { Client } from "./client";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <Client />
   </Provider>,
   document.getElementById("root") as HTMLElement
 );
