@@ -25,8 +25,8 @@ const Hello = ({
         Hello {name + getExclamationMarks(enthusiasmLevel)}
       </div>
       <div>
-        <button onClick={onDecrement}>+</button>
-        <button onClick={onIncrement}>-</button>
+        <button onClick={onIncrement}>+</button>
+        <button onClick={onDecrement}>-</button>
       </div>
     </div>
   );
