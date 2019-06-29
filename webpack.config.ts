@@ -1,8 +1,8 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-import webpack from 'webpack';
-import path from 'path';
+const webpack = require( 'webpack');
+const path = require('path');
 const config:any = {
     mode: process.env.NODE_ENV !== 'production'?'development':'production',
     devtool: "cheap-eval-source-map",
@@ -10,7 +10,8 @@ const config:any = {
     output : {
         path: path.join(__dirname, '/dist/'),
         filename: '[name].js',
-        publicPath: '/'
+        publicPath: '/',
+        chunkFilename : '[name].[chunkhash:8].js'
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
@@ -45,31 +46,17 @@ const config:any = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         new CleanWebpackPlugin() 
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+          chunks: 'all',
+        },
+      },
+    
 }
 
 if(process.env.NODE_ENV === 'production'){
     delete config['devtool']
-    config.optimization = {
-        splitChunks: {
-            chunks: 'initial',
-            minSize: 20000,
-            minChunks: 2,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            name: true,
-            cacheGroups: {
-              default: {
-                minChunks: 2,
-                priority: -20,
-              },
-              vendors: {
-                test: /[\\/]node_modules[\\/]/,
-                priority: -10,
-              },
-            }
-        }
-    }
 }
 
 module.exports = config

@@ -1,11 +1,11 @@
 
-import webpack from 'webpack';
-import path from 'path';
+const _webpack = require( 'webpack');
+const _path = require('path');
 const express = require('express')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
-const config = require('./webpack.config.js')
+const _config= require('./webpack.config.js')
 
 const isDeveloping = process.env.NODE_ENV !== 'production'
 const port = isDeveloping ? 3000 : process.env.PORT
@@ -14,9 +14,9 @@ const compression = require('compression');
 const app = express()
 
 if (isDeveloping) {
-    const compiler = webpack(config)
+    const compiler = _webpack(_config)
     const middleware =  webpackMiddleware(compiler,{
-        publicPath: config.output.publicPath,
+        publicPath: _config.output.publicPath,
         contentBase: 'src',
         stats: {
             colors: true,
@@ -30,7 +30,7 @@ if (isDeveloping) {
     app.use(middleware)
     app.use(webpackHotMiddleware(compiler))
     app.get('*', (req : any, res : any) => {
-        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
+        res.write(middleware.fileSystem.readFileSync(_path.join(__dirname, 'dist/index.html')))
         res.end()
     })
 
@@ -39,7 +39,7 @@ if (isDeveloping) {
     app.use(compression());
     app.use(express.static(__dirname + '/'))
     app.get('*', (req : any, res : any) => {
-        res.sendFile(path.join(__dirname, '/index.html'))
+        res.sendFile(_path.join(__dirname, '/index.html'))
     })
 }
 

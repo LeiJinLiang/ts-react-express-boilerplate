@@ -22,7 +22,9 @@ const mapDispatchToProps = (dispath: any) => ({
   getRemote: (url: string) => dispath(REMOTEDATA, url)
 });
 
-export const RemoteContainer = connect(
+const RemoteContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Remote);
+
+export default RemoteContainer;
