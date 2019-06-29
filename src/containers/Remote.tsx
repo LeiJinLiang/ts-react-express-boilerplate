@@ -2,6 +2,7 @@ import * as React from "react";
 import { RemoteView } from "../components/RemoteView";
 import { REMOTEDATA } from "../actions/remote";
 import { connect } from "react-redux";
+import { State } from "../types";
 
 class Remote extends React.Component<any, any> {
   constructor(props: any) {
@@ -16,7 +17,9 @@ class Remote extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state: any) => ({ data: state.remoteReducer.payload });
+const mapStateToProps = (state: State) => ({
+  data: state.remoteReducer.payload
+});
 
 const mapDispatchToProps = (dispath: any) => ({
   getRemote: (url: string) => dispath(REMOTEDATA, url)

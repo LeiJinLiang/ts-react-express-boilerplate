@@ -7,7 +7,7 @@ const initState = {
   languageName: "TS"
 };
 
-export const enthusiasm = (
+export const enthusiasmReducer = (
   state: StoreState = initState,
   action: EnthusiasmAction
 ): StoreState => {

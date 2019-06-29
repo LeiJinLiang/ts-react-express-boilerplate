@@ -2,10 +2,11 @@ import Hello from "../components/Hello";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { State } from "../types";
 
-export const mapStateToProps = (state: any) => ({
-  enthusiasmLevel: state.enthusiasm.enthusiasmLevel,
-  name: state.enthusiasm.languageName
+export const mapStateToProps = (state: State) => ({
+  enthusiasmLevel: state.enthusiasmReducer.enthusiasmLevel,
+  name: state.enthusiasmReducer.languageName
 });
 
 export const mapDispatchToProps = (
