@@ -1,2 +1,3 @@
 import * as React from "react";
-export const Home = () => <p>Home..</p>;
+import { useWindowWidth } from './hooks/useWindowWidth';
+export const Home = () => <p>Home..{useWindowWidth()}</p>;
