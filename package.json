@@ -2,7 +2,7 @@
   "name": "ts-react-express-boilerplate",
   "version": "1.0.0",
   "description": "ts",
-  "main": "index.js",
+  "main": "main.js",
   "author": "jinlei",
   "license": "MIT",
   "private": true,

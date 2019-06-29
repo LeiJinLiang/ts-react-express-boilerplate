@@ -9,7 +9,7 @@ const config:any = {
     entry: process.env.NODE_ENV === 'production'?[path.resolve('src/main.tsx')]:['webpack-hot-middleware/client?reload=true', path.resolve('src/main.tsx')],
     output : {
         path: path.join(__dirname, '/dist/'),
-        filename: '[name].js',
+        filename: 'bundle.[hash:8].js',
         publicPath: '/',
         chunkFilename : '[name].[chunkhash:8].js'
     },
