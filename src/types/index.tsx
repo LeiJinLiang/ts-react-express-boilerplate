@@ -1,12 +1,10 @@
-import { BooleanLiteral } from "typescript";
-
 export interface StoreState {
   languageName: string;
   enthusiasmLevel: number;
 }
 
 export interface Remote {
-  isFetching: BooleanLiteral;
+  isFetching: Boolean;
   fetched: Boolean;
   payload: any[];
   err: any;
