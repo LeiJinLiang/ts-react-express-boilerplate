@@ -2,7 +2,7 @@ import * as React from "react";
 import "./LazyImage.css";
 
 /**
- * @see 
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API 
  * 创建一个IntersectionObsever对象，并传入对象的参数和回调函数，
  * 该回调函数会在目标(target)和根元素(root)的交集大小超过阈值(threshold)规定的大小被执行
  * @eg var options ={
