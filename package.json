@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "export NODE_ENV=development && npx webpack && tsc && node ./dist/server.js",
+    "start": "export NODE_ENV=development && npx webpack && tsc -p tsconfig.json && node ./dist/server.js",
     "launch": "export NODE_ENV=production PORT=3001 && npx webpack && tsc -p tsconfig.prod.json && node ./dist/server.js",
     "build":"export NODE_ENV=production && npx webpack && tsc -p tsconfig.prod.json",
     "format": "prettier --write \"src/**/*.tsx\""
