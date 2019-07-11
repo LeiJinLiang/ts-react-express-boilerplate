@@ -1,0 +1,14 @@
+.nav{
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav>p{
+   flex: 1 
+}
+.nav>p>a{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
