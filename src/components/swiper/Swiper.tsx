@@ -5,6 +5,7 @@ const Wrapper = styled.main`
   width: 100%;
   height: 300px;
   overflow: hidden;
+  background-color: #000;
 `;
 
 const run = keyframes`
@@ -45,8 +46,10 @@ const Item2 = styled(Item)`
 
 export const Swiper = () => {
   const ele: any = React.useRef(null);
+  const wrapper: any = React.useRef(null);
   let timer: any = null;
   let count: number = 0;
+  const position = { xStart: 0, xEnd: 0, distance: 0 };
 
   const handleMove = () => {
     if (count < 3) {
@@ -60,6 +63,33 @@ export const Swiper = () => {
     }
   };
 
+  const handleMouseDown = (event: React.MouseEvent) => {
+    position.xStart = event.clientX - ele.current.offsetLeft;
+  };
+
+  // const handleMouseMove = (event: React.MouseEvent) => {
+  //   position.x = event.clientX - ele.current.offsetLeft;
+  //   console.log(position.x)
+  // };
+  const handleMouseUp = (event: React.MouseEvent) => {
+    position.xEnd = event.clientX - ele.current.offsetLeft;
+    position.distance = position.distance + (position.xEnd - position.xStart);
+    ele.current.style.webkitTransform = `translate3d(${position.distance}px,0,0)`;
+    setTimeout(handleFeedBack,50)  
+  };
+
+  const handleFeedBack = () => {
+    // console.log('position.distance',position.distance)
+    if(position.distance > 40){
+      ele.current.style.webkitTransform = `translate3d(0,0,0)`;
+      position.distance = 0
+    } 
+    if(Math.abs(position.distance)> wrapper.current.offsetWidth * 2){
+      ele.current.style.webkitTransform = `translate3d(-200%,0,0)`;
+      position.distance = - wrapper.current.offsetWidth * 2
+    }
+  }
+
   React.useEffect(() => {
     timer = setInterval(handleMove, 3000);
     return () => {
@@ -70,7 +100,12 @@ export const Swiper = () => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper
+        ref={wrapper}
+        onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
         <Content ref={ele}>
           <Item>1</Item>
           <Item1>2</Item1>
