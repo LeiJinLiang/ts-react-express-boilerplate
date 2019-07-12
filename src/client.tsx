@@ -11,6 +11,7 @@ const RemoteContainer = asyncComponent(() =>
   import(/* webpackChunkName: 'books' */ "./containers/Remote")
 );
 import { NotFound } from "./components/404";
+import { Swiper } from "./components/swiper/Swiper";
 export const Client = () => (
   <Router>
     <div className="nav">
@@ -26,12 +27,16 @@ export const Client = () => (
       <p>
         <Link to="/picture">picture</Link>
       </p>
+      <p>
+        <Link to="/demo">demo</Link>
+      </p>
     </div>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={Hello} />
       <Route path="/books" component={RemoteContainer} />
       <Route path="/picture" component={LazyImage} />
+      <Route path="/demo" component={Swiper} />
       <Route component={NotFound} />
     </Switch>
   </Router>

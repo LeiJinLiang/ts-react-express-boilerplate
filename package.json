@@ -9,7 +9,7 @@
   "scripts": {
     "start": "export NODE_ENV=development && npx webpack && tsc -p tsconfig.json && node ./dist/server.js",
     "launch": "export NODE_ENV=production PORT=3001 && npx webpack && tsc -p tsconfig.prod.json && node ./dist/server.js",
-    "build":"export NODE_ENV=production && npx webpack && tsc -p tsconfig.prod.json",
+    "build": "export NODE_ENV=production && npx webpack && tsc -p tsconfig.prod.json",
     "format": "prettier --write \"src/**/*.tsx\""
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "@types/react-router-dom": "^4.3.4",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.7",
+    "@types/styled-components": "4.1.8",
     "@types/webpack": "^4.4.34",
     "@types/webpack-dev-middleware": "^2.0.3",
     "@types/webpack-hot-middleware": "^2.16.5",
@@ -42,6 +43,7 @@
     "prettier": "^1.18.2",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "styled-components": "^4.3.2",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2",
     "webpack": "^4.35.0",

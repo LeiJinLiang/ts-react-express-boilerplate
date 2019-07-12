@@ -10,7 +10,7 @@
         "jsx": "react",
         "lib": ["es5", "es2015", "es2016", "dom"],
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "node"
     },
     "exclude": [
         "node_modules",
