@@ -73,22 +73,24 @@ export const Swiper = () => {
   // };
   const handleMouseUp = (event: React.MouseEvent) => {
     position.xEnd = event.clientX - ele.current.offsetLeft;
-    position.distance = position.distance + (position.xEnd - position.xStart);
-    ele.current.style.webkitTransform = `translate3d(${position.distance}px,0,0)`;
-    setTimeout(handleFeedBack,50)  
+    if (position.xEnd - position.xStart > 50) {
+      count -= 1;
+    }
+
+    if (position.xStart - position.xEnd > 50) {
+      count += 1;
+    }
+
+    if (count < 0) {
+      count = 0;
+    }
+    if (count > 2) {
+      count = 2;
+    }
+    ele.current.style.webkitTransform = `translate3d(-${count * 100}%,0,0)`;
   };
 
-  const handleFeedBack = () => {
-    // console.log('position.distance',position.distance)
-    if(position.distance > 40){
-      ele.current.style.webkitTransform = `translate3d(0,0,0)`;
-      position.distance = 0
-    } 
-    if(Math.abs(position.distance)> wrapper.current.offsetWidth * 2){
-      ele.current.style.webkitTransform = `translate3d(-200%,0,0)`;
-      position.distance = - wrapper.current.offsetWidth * 2
-    }
-  }
+  const handleFeedBack = () => {};
 
   React.useEffect(() => {
     timer = setInterval(handleMove, 3000);
